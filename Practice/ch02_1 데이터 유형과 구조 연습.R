@@ -1,0 +1,296 @@
+#4?Ž˜?´ì§€ ?‹œ?ž‘
+
+x <- c(1,3,5,7)
+y <- c(3,5)
+
+union(x,y) #?•©ì§‘í•©
+intersect(x,y) #êµì§‘?•©
+setdiff(x,y) #x-y
+
+v1 <- c(33, -5, 20:23, 12, -2:3)
+v2 <- c('?™ê¸¸ë™', '?´?ˆœ?‹ ', '?œ ê´€?ˆœ')
+v3 <- c(T, TRUE, FALSE, T, TRUE, F, T)
+v1; v2; v3
+
+v4 <- c(33, 05, 20:23, 12, '4')
+v4
+
+#?„¸ë¯¸ì½œë¡?(;) ?‚¬?š©?‹œ ?•œì¤„ì— ?—¬?Ÿ¬ê°œì˜ ëª…ë ¹ë¬? ?‚¬?š© ê°€?Š¥
+mode(v4)
+class(v4)
+v1; mode(v1); class(v1)
+v2; mode(v2); class(v2)
+v3; mode(v3); class(v3)
+
+#names()?•¨?ˆ˜ : ë²¡í„°?—?„œ ì»¬ëŸ¼ëª? ì§€? •
+#ë²¡í„°?— NULLì¶”ê?€ ?‹œ ê°ì²´ ? œê±?
+age <- c(30,35,40)
+age
+names(age) <- c('?™ê¸¸ë™', '?´?ˆœ?‹ ', 'ê°•ê°ì°?')
+age
+age <- NULL
+
+#index ?‚¬?š©?‹œ ê¼? ??€ê´„í˜¸[]ë¡? ë¬¶ì–´?•¼ì¤˜ì•¼?•¨
+#index?Š” 1ë¶€?„° ?‹œ?ž‘?•¨
+a <- c(1:50)
+a[10:45]
+a[19: (length(a) - 5)] # = a[19:45]
+
+v1 <- c(13, -5, 20:23, 12, -2:3)
+v1[1]
+v1[c(2,4)]
+v1[c(3:5)]
+v1[c(4, 5:8, 7)]
+
+#index ?Œ?ˆ˜
+#indexê°€ ?Œ?ˆ˜ -> ?•´?‹¹ index ? œ?™¸
+#-c(2:5) = index 2~5 ? œ?™¸
+
+v1[-1]; v1[-c(2, 4)]; v1[-c(2:5)]; v1[-c(2, 5:10, 1)]
+
+
+#ë²¡í„° ê°ì²´ ?°?´?„° ?…‹
+install.packages("RSADBE")
+library(RSADBE)
+data(Severity_Counts) # RSADBE ?Œ¨?‚¤ì§€?—?„œ ? œê³µë˜?Š” ?°?´?„°?…‹ ë¡œë”©
+str(Severity_Counts) # ?°?´?„°?…‹ êµ¬ì¡° ë³´ê¸°
+head(Severity_Counts)
+
+#Matrix ?žë£? êµ¬ì¡°
+#?–‰? ¬ ?žë£? êµ¬ì¡°, 2ì°¨ì›
+#?™?¼?•œ ??€?ž…?˜ ?°?´?„°ë§? ??€?ž¥ ê°€?Š¥?•¨
+#?–‰? ¬ ?ƒ?„± ?•¨?ˆ˜
+#matrix(), rbind() -> row(?–‰) bind, cbind() -> column(?—´) bind
+#?–‰? ¬ ?žë£? ì²˜ë¦¬ ?•¨?ˆ˜ : apply()
+
+#c()?•¨?ˆ˜?Š” ê¸°ë³¸? ?œ¼ë¡? ?—´?„ ê¸°ì?€?œ¼ë¡? ê°ì²´ ?ƒ?„±
+
+m <- matrix(c(1:5))
+m
+
+m <- matrix(c(1:10), nrow = 2) #nrow?Š” ?–‰ ê°œìˆ˜ ?˜µ?…˜
+m
+
+#?–‰ê³? ?—´?˜ ?ˆ˜ê°€ ë¶ˆì¼ì¹˜í•œ ê²½ìš°
+
+m <- matrix(c(1:11), nrow = 2)
+m
+
+# ?–‰ê³? ?—´?´ ?ˆ˜ê°€ ë¶ˆì¼ì¹? -> ê²½ê³  ?›„
+# ëª¨ìž?¼?Š” ?°?´?„°?Š” ì²«ë²ˆì§? ?°?´?„° ?ž¬?‚¬?š©
+
+#?–‰ ?š°?„ ?œ¼ë¡? ?–‰? ¬ ?ƒ?„±
+m <- matrix(c(1:10), nrow = 2, byrow = T) #byrow = T?Š” ?–‰ ?š°?„  ë°°ì—´ ?„¤? • ?˜µ?…˜ 
+m
+
+#?–‰ ?˜?Š” ?—´ ë¬¶ìŒ?œ¼ë¡? ?–‰? ¬ ?ƒ?„±
+#rbind() : ?–‰ ë¬¶ìŒ, cbind() : ?—´ ë¬¶ìŒ
+
+#?‹¤?Šµ ?–‰ë¬¶ìŒ
+x1 <- c(40, 50:52)
+x2 <- c(30, 6:8)
+mr <- rbind(x1, x2)
+mr
+
+#?‹¤?Šµ ?—´ë¬¶ìŒ
+mc <- cbind(x1, x2)
+mc
+
+mc2 <- cbind(x2, x1)
+mc2
+
+
+#matrix()?•¨?ˆ˜ ?´?š© ?–‰? ¬ ?ƒ?„±
+#?˜•?‹ : matrix(data = NA, nrow = 1, ncol = 1, byrow = FALSE, dimnames = NULL)
+
+#2?–‰?œ¼ë¡? ?–‰? ¬ ?ƒ?„±
+m3 <- matrix(10:19, nrow = 2)
+m4 <- matrix(10:20, nrow = 2)
+m3 
+m4
+mode(m3); class(m3)
+mode(m4); class(m4)
+
+#indexë¥? ?´?š©?•´ ?–‰? ¬?— ? ‘ê·?
+#?˜•?‹ : ë³€?ˆ˜ëª?[?–‰ index, ?—´ index]
+#?Š¹? • ?–‰ ? ‘ê·? : ë³€?ˆ˜ëª?[?–‰ index,]
+#?Š¹? • ?—´ ? ‘ê·? : ë³€?ˆ˜ëª?[, index]
+#ì½¤ë§ˆ(,) ë¹¼ë¨¹?œ¼ë©? ?•ˆ?¼
+
+m3[1,]
+m3[,5]
+m3[2,3]
+m3[1,c(2:5)]
+
+
+#?–‰ ?š°?„ ?œ¼ë¡? ?ƒ?„± ?‹œ byrow = T ?†?„± ì¶”ê?€
+x <- matrix(c(1:9), nrow = 3, ncol = 3, byrow = T)
+x
+
+#apply()?•¨?ˆ˜ 
+#?˜•?‹ : apply(x, 1(?–‰?‹¨?œ„) or 2(?—´?‹¨?œ„), ?–‰? ¬?— ? ?š©?•  ?•¨?ˆ˜[ex) max, min, mean])
+
+apply(x, 1, max)
+apply(x, 1, min)
+apply(x, 2, mean)
+
+#?‚¬?š©?ž ? •?˜ ?•¨?ˆ˜
+#?˜•?‹ : function(x)
+
+f <- function(x){
+  x *c(1,2,3)
+}
+
+result <- apply(x, 2, f)
+result
+x
+
+#?–‰? ¬?— ì»¬ëŸ¼ëª? ì§€? •
+#colnames()?•¨?ˆ˜, rownames()?•¨?ˆ˜
+
+colnames(x) <- c('one', 'two', 'three')
+x
+rownames(x) <- c('ONE', 'TWO', 'THREE')
+x
+
+
+#array ?žë£Œêµ¬ì¡?
+#3ì°¨ì› ë°°ì—´ ?˜•?ƒœ
+#ë°°ì—´ ?ƒ?„± ?•¨?ˆ˜ : array()
+
+vec <- c(1:18)
+arr <- array(vec, c(3,2,3))
+arr
+
+arr[,,1]
+arr[,,2]
+
+mode(arr)
+class(arr)
+
+
+#?°?´?„° ?…‹ ê°€? ¸?˜¤ê¸? #?‚œ ?•ˆ ??Œ;
+library(RSADBE)
+data("Bug_Metrices_Software")
+str(Bug_Metrices_Software)
+
+#DataFrame ?žë£Œêµ¬ì¡?
+#R?—?„œ ê°€?ž¥ ë§Žì´ ?“°?Š” ?žë£Œêµ¬ì¡?
+#DB?˜ ?…Œ?´ë¸? êµ¬ì¡°??€ ?œ ?‚¬
+#ì»¬ëŸ¼ ?‹¨?œ„ë¡? ?„œë¡? ?‹¤ë¥? ?°?´?„° ?˜•?˜ ??€?ž¥?´ ê°€?Š¥
+#ì»¬ëŸ¼??€ ë¦¬ìŠ¤?Š¸, ì»¬ëŸ¼ ?‚´ ?°?´?„°?Š” ë²¡í„° êµ¬ì¡°
+#DataFrame ?ƒ?„±?•¨?ˆ˜ : data.frame(), read,table(), read.csv()
+#DataFrame ?žë£? ì²˜ë¦¬ ?•¨?ˆ˜ : str(), ncol(), nrow(), apply(), summary(), subset()
+
+
+no <- c(1, 2, 3)
+name <- c("hong", "lee", "kim")
+pay <- c(150, 250, 300)
+vemp <- data.frame(No = no, Name = name, Pay = pay)
+vemp
+
+
+#matrix ?´?š© data.frame ?ƒ?„±
+m <- matrix(c(1,"hong", 150,
+              2, "lee", 250,
+              3, 'kim', 300), 3, byrow = T)
+m
+
+memp <- data.frame(m)
+memp
+
+colnames(memp) <- c('one','two','three')
+memp
+
+#text?ŒŒ?¼ ?´?š© data.frame ?ƒ?„±
+getwd()
+txtemp <- read.table('emp.txt', header = 1, sep = '')
+txtemp
+
+#csv?ŒŒ?¼ ?´?š© data.frame ?ƒ?„±
+getwd()
+csvtemp <- read.csv('emp.csv', header = T)
+csvtemp
+
+read.csv('emp2.csv', header = F)
+name <- c('?‚¬ë²?', '?´ë¦?','ê¸‰ì—¬')
+read.csv('emp2.csv', header = F, col.names = name)
+
+#data.frame ë§Œë“¤ê¸?
+df <- data.frame(x = c(1:5), y = seq(2, 10 ,2), z = c('a', 'b', 'c', 'd', 'e'))
+df
+
+ #data.frame?—?„œ?˜ $?—­?• 
+#?˜•?‹ : ë³€?ˆ˜ëª?$ì»¬ëŸ¼ëª?
+df$x
+df$z
+
+str(df) #data.frame?˜ êµ¬ì¡°ë¥? ë³´ì—¬ì¤?
+ncol(df)
+nrow(df)
+names(df)
+df[c(2:3),1]
+
+#summary()?•¨?ˆ˜ : ìµœì†Œê°?, ìµœë?€ê°?, ì¤‘ìœ„?ˆ˜, ?‰ê·?, ?‚¬ë¶„ìœ„?ˆ˜ê°’ì„ ?š”?•½?•˜?—¬ ë³´ì—¬ì¤€?‹¤.
+summary(df)
+
+#?•¨?ˆ˜? ?š©
+#apply()?•¨?ˆ˜
+#?˜•?‹ : apply(data.frame, ?–‰/?—´, ?•¨?ˆ˜)
+apply(df[,c(1, 2)], 2, sum)
+
+#data.frame?˜ ë¶€ë¶„ê°ì²?
+#subset() ?•¨?ˆ˜ : data.frame()?—?„œ ì¡°ê±´?— ë§Œì¡±?•˜?Š” ?–‰?„ ì¶”ì¶œ?•˜?—¬ ?…ë¦½ëœ ê°ì²´?¸ subset ?ƒ?„±
+#?˜•?‹ : subset(data.frame, ì¡°ê±´)
+
+df
+x1 <- subset(df, x >=3)
+x1
+
+#2ê°œì˜ ì¡°ê±´ ?´?š© ë¶€ë¶? ê°ì²´ ë§Œë“¤ê¸?
+y1 <- subset(df, y<=8)
+xyand <- subset(df, x<=2 & y<=8 )
+xyor <- subset(df, x<=2 | y>=8)
+y1
+xyand
+xyor
+
+#?‹¤?Šµ
+sid = c('A','B','C','D')
+score = c(90,80,70,60)
+subject = c('ì»´í“¨?„°', 'êµ??–´êµ?ë¬?', '?†Œ?”„?Š¸?›¨?–´', '?œ ?•„êµìœ¡')
+
+student <- data.frame(sid, score, subject)
+student
+
+mode(student); class(student)
+str(sid)
+str(score)
+str(subject)
+str(student)
+
+#data.frame ë³‘í•©
+
+#1?‹¨ê³? ë³‘í•©?•  ?”„? ˆ?ž„ ?ƒ?„±
+height <- data.frame(id = c(1,2), h = c(180,175))
+height
+weight <- data.frame(id = c(1,2), w = c(80,75))
+weight
+
+#2?‹¨ê³? data.frame ë³‘í•©
+user <- merge(height, weight, by.x = 'id', by.y = 'id')
+user
+
+#galton ?°?´?„°?…‹
+install.packages('UsingR')
+library(UsingR)
+data(galton)
+
+
+str(galton)
+dim(galton)
+head(galton, 15)
+
+ffff
+
+h
